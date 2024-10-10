@@ -1,3 +1,4 @@
+import secrets
 from typing import Annotated, Any, Literal
 import warnings
 
@@ -44,6 +45,7 @@ class Settings(BaseSettings):
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str = ""
     POSTGRES_DB: str = ""
+    SECRET_KEY: str = secrets.token_urlsafe(32)
 
     @computed_field  # type: ignore[prop-decorator]
     @property
