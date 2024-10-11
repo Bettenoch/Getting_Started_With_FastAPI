@@ -4,6 +4,8 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
+from app.models import SQLModel   # noqa
+
 from app.core.config import settings # noqa
 
 
@@ -13,7 +15,7 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 
-target_metadata = None
+target_metadata = SQLModel.metadata
 
 def get_url():
     return str(settings.SQLALCHEMY_DATABASE_URI)
