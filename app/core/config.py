@@ -30,6 +30,8 @@ class Settings(BaseSettings):
     )
     ENVIRONMENT: Literal["local", "staging", "production"] = "local" #The deployment environment (local, staging, production).
     API_V1_STR: str = "/api/v1"
+    
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
     BACKEND_CORS_ORIGINS: Annotated[
         list[AnyUrl] | str, BeforeValidator(parse_cors)
     ] = [] #List of allowed origins for CORS, which can be specified as a string or a list.
